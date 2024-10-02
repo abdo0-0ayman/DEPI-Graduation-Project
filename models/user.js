@@ -1,7 +1,7 @@
 import {mongoose , Schema} from "mongoose"  
 import {bcrypt} from "bcrypt"
  
-const trainnigDet = new Schema({
+const trainingDet = new Schema({
     trainingId : {
         type : String,
         required : true,
@@ -70,7 +70,7 @@ const userSchema = new Schema({
         unique : [true, 'Mobile number already in use'],
         validate : {
             validator : function(v){
-                return /^[0-9]{10}$/.test(v);
+                return /^01[0-2][0-9]{8}$/.test(v);
             },
             message : props => `${props.value} is not a valid mobile number`
         },
@@ -235,7 +235,7 @@ const userSchema = new Schema({
     },
     
     trainings : {
-        details : [trainnigDet],
+        details : [trainingDet],
     }, 
 
     history : {
